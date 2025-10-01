@@ -170,8 +170,8 @@ Que es el vínculo perfecto”</p>
             <div class="seccion-contenido-solido">
                 <div class="contenido-interno fade-in-on-scroll">
                     <p class="texto-invitacion">Este día especial queremos rodearnos
-De familia y amigos para celebrar</p>
-                    <p class="texto-invitacion">El amor que nos une.</p>
+De familia y amigos para celebrar el amor que nos une.</p>
+                    <p class="texto-invitacion"></p>
                     <h1 class="nombres-boda">Enrique y Alejandra</h1>
                 </div>
             </div>
@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
         urlGoogleSheet: "https://script.google.com/macros/s/AKfycbzkqjkqnI0MBZTXPoalzm7tpxkIMcCRgCRpPGwkXmX-0xIubKX9B-91JRIwQsZjmkm0/exec"
     };
 
-    // --- ELEMENTOS DEL DOM (VERSIÓN COMPLETA Y UNIFICADA) ---
+    // --- ELEMENTOS DEL DOM ---
     const verInvitacionBtn = document.getElementById('verInvitacionBtn');
     const portada = document.getElementById('portada');
     const seccionLogo = document.getElementById('seccion-logo');
@@ -320,37 +320,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const nombreAcompananteWrapper = document.getElementById('nombre-acompanante-wrapper');
     const nombreAcompananteInput = document.getElementById('nombre-acompanante-input');
 
-    // --- LÓGICA DE LA PORTADA (VERSIÓN FINAL COMPATIBLE CON MÓVIL Y ESCRITORIO) ---
+    // --- LÓGICA DE LA PORTADA (VERSIÓN FINAL CON ANIMACIÓN EN 2 FASES) ---
     let animacionScrollActiva = false;
     let virtualScrollY = 0;
-    const scrollMax = 1200; // Aumentado para una animación más lenta y apreciable
-    let touchStartY = 0; // Para registrar el inicio del toque en móviles
+    const scrollMax = 1500; // Aumentado para que cada fase dure más
+    let touchStartY = 0;
 
     if (verInvitacionBtn) {
         verInvitacionBtn.addEventListener('click', () => {
             audio.play().catch(error => console.log("La reproducción fue bloqueada."));
             portada.classList.add('oculta');
-
             setTimeout(() => {
                 seccionLogo.classList.add('visible');
                 invitacionPrincipal.style.visibility = 'visible';
                 invitacionPrincipal.style.opacity = '0';
-                logoImg.style.transform = 'scale(1.25)';
+                logoImg.style.transform = 'scale(2.0)'; // Inicia al doble de tamaño
                 document.body.style.overflow = 'hidden';
                 animacionScrollActiva = true; 
             }, 1000); 
         });
     }
 
-    // Función que actualiza la animación
     function actualizarAnimacion(progreso) {
-        const escala = 1.25 + (progreso * 0.75);
-        logoImg.style.transform = `scale(${escala})`;
+        if (progreso < 0.5) {
+            // --- FASE 1: CRECIMIENTO (0% al 50% del scroll) ---
+            const progresoFase1 = progreso / 0.5; // Normaliza el progreso de esta fase (de 0 a 1)
+            
+            // El logo crece de 2.0 a 2.5
+            const escala = 2.0 + (progresoFase1 * 0.5); 
+            logoImg.style.transform = `scale(${escala})`;
+            
+            // Se mantiene totalmente visible
+            seccionLogo.style.opacity = 1;
+            invitacionPrincipal.style.opacity = 0;
 
-        const opacidadLogo = 1 - progreso;
-        seccionLogo.style.opacity = opacidadLogo;
+        } else {
+            // --- FASE 2: TRANSICIÓN (50% al 100% del scroll) ---
+            const progresoFase2 = (progreso - 0.5) / 0.5; // Normaliza el progreso de esta fase (de 0 a 1)
+            
+            // El tamaño del logo se mantiene en el máximo
+            logoImg.style.transform = 'scale(2.5)';
 
-        invitacionPrincipal.style.opacity = progreso;
+            // Ocurre la disolvencia cruzada
+            const opacidadLogo = 1 - progresoFase2;
+            seccionLogo.style.opacity = opacidadLogo;
+            invitacionPrincipal.style.opacity = progresoFase2;
+        }
 
         if (progreso >= 1) {
             animacionScrollActiva = false;
@@ -361,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Listener para Escritorio (Rueda del ratón) ---
+    // Listeners para Escritorio y Móvil
     window.addEventListener('wheel', (event) => {
         if (!animacionScrollActiva) return;
         event.preventDefault();
@@ -371,26 +386,24 @@ document.addEventListener('DOMContentLoaded', () => {
         actualizarAnimacion(virtualScrollY / scrollMax);
     }, { passive: false });
 
-    // --- Listeners para Móvil (Gestos táctiles) ---
     window.addEventListener('touchstart', (event) => {
         if (!animacionScrollActiva) return;
-        touchStartY = event.touches[0].clientY; // Guarda la posición inicial del dedo
+        touchStartY = event.touches[0].clientY;
     });
 
     window.addEventListener('touchmove', (event) => {
         if (!animacionScrollActiva) return;
         event.preventDefault();
         const touchCurrentY = event.touches[0].clientY;
-        const deltaY = touchStartY - touchCurrentY; // Calcula cuánto se ha movido el dedo
-        touchStartY = touchCurrentY; // Actualiza la posición para el siguiente movimiento
-
-        virtualScrollY += deltaY * 2; // Multiplicamos por 2 para más sensibilidad táctil
+        const deltaY = touchStartY - touchCurrentY;
+        touchStartY = touchCurrentY;
+        virtualScrollY += deltaY * 2;
         if (virtualScrollY < 0) virtualScrollY = 0;
         if (virtualScrollY > scrollMax) virtualScrollY = scrollMax;
         actualizarAnimacion(virtualScrollY / scrollMax);
     }, { passive: false });
 
-    // --- LÓGICA PARA ANIMACIONES AL HACER SCROLL (SECCIÓN RESTAURADA) ---
+    // --- LÓGICA PARA ANIMACIONES AL HACER SCROLL ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -398,14 +411,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, { threshold: 0.01 });
-
-    document.querySelectorAll('.fade-in-on-scroll').forEach(section => {
-        observer.observe(section);
-    });
+    document.querySelectorAll('.fade-in-on-scroll').forEach(section => observer.observe(section));
     
     // --- LÓGICA DEL CONTADOR REGRESIVO ---
     const fechaEvento = config.fechaBoda.getTime();
-    const intervalo = setInterval(function() {
+    const intervalo = setInterval(() => {
         const ahora = new Date().getTime();
         const distancia = fechaEvento - ahora;
         if (distancia < 0) {
@@ -413,23 +423,23 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('contador-contenedor').innerHTML = "<h2>¡El gran día ha llegado!</h2>";
             return;
         }
-        document.getElementById('dias').innerText = String(Math.floor(distancia / (1000 * 60 * 60 * 24))).padStart(2, '0');
-        document.getElementById('horas').innerText = String(Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-        document.getElementById('minutos').innerText = String(Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-        document.getElementById('segundos').innerText = String(Math.floor((distancia % (1000 * 60)) / 1000)).padStart(2, '0');
+        document.getElementById('dias').innerText = String(Math.floor(distancia / 86400000)).padStart(2, '0');
+        document.getElementById('horas').innerText = String(Math.floor((distancia % 86400000) / 3600000)).padStart(2, '0');
+        document.getElementById('minutos').innerText = String(Math.floor((distancia % 3600000) / 60000)).padStart(2, '0');
+        document.getElementById('segundos').innerText = String(Math.floor((distancia % 60000) / 1000)).padStart(2, '0');
     }, 1000);
     
     // --- LÓGICA DEL BOTÓN "AGREGAR A CALENDARIO" ---
     function generarLinkCalendario() {
         const fechaInicio = config.fechaBoda;
-        const fechaFin = new Date(fechaInicio.getTime() + (6 * 60 * 60 * 1000));
+        const fechaFin = new Date(fechaInicio.getTime() + 21600000);
         const formatoFechaUTC = (fecha) => fecha.toISOString().replace(/-|:|\.\d+/g, '');
         const url = new URL('https://www.google.com/calendar/render');
         url.searchParams.append('action', 'TEMPLATE');
         url.searchParams.append('text', config.tituloCalendario);
         url.searchParams.append('dates', `${formatoFechaUTC(fechaInicio)}/${formatoFechaUTC(fechaFin)}`);
         url.searchParams.append('location', config.ubicacionCeremonia);
-        url.searchParams.append('details', `Acompáñanos a celebrar la boda de ${config.tituloCalendario}. Detalles en: ${window.location.href}`);
+        url.searchParams.append('details', `Acompáñanos a celebrar la boda. Detalles en: ${window.location.href}`);
         document.getElementById('botonCalendario').href = url.toString();
     }
     generarLinkCalendario();
@@ -442,8 +452,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (vieneAcompananteSelect) {
         vieneAcompananteSelect.addEventListener('change', (e) => {
-            nombreAcompananteWrapper.style.display = (e.target.value === 'Sí') ? 'block' : 'none';
-            nombreAcompananteInput.required = (e.target.value === 'Sí');
+            const necesitaAcompanante = e.target.value === 'Sí';
+            nombreAcompananteWrapper.style.display = necesitaAcompanante ? 'block' : 'none';
+            nombreAcompananteInput.required = necesitaAcompanante;
         });
     }
     
@@ -459,9 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (response.ok) {
                     document.getElementById('mensaje-gracias').style.display = 'block';
                     this.style.display = 'none';
-                } else {
-                    throw new Error('Error al enviar la confirmación.');
-                }
+                } else { throw new Error('Error al enviar.'); }
             } catch (error) {
                 console.error('Error:', error);
                 alert('Hubo un problema al enviar tu confirmación. Por favor, inténtalo de nuevo.');
