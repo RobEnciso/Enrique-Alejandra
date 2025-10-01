@@ -97,6 +97,10 @@
         #seccion-logo.visible img {
             animation: zoomInElegante 3.5s ease-out forwards;
         }
+        /* ===== FIX DEFINITIVO: Forzar visibilidad de la galería ===== */
+#galeria .fade-in-on-scroll {
+    opacity: 1;
+}
         /* ===== ANIMACIÓN DE ZOOM (KEYFRAMES) ===== */
         @keyframes zoomInElegante {
             from {
@@ -233,7 +237,7 @@ efectivo en sobres que habrá en la fiesta o mesa de regalos Liverpool código 5
         </article>
 
         <section id="galeria">
-            <div class="contenido-interno">
+            <div class="contenido-interno fade-in-on-scroll">
                 <h2 style="font-size: 3.5rem; font-family: var(--fuente-elegante); font-style: italic;">Nuestros Momentos</h2>
                 <div class="galeria-grid">
                     <img src="galeria1.jpg" alt="galeria1.jpg"><img src="galeria2.jpg" alt="galeria2.jpg">
