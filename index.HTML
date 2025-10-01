@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
-        :root{--color-fondo:#ffffff;--color-texto-principal:#3a3a3a;--color-texto-secundario:#ffffff;--color-acento:#8a7967;--color-acento-oscuro:#6d5f50;--fuente-titulos:'Playfair Display',serif;--fuente-texto:'Montserrat',sans-serif;--fuente-elegante:'Cormorant Garamond',serif}html{scroll-behavior:smooth}body{margin:0;font-family:var(--fuente-texto);color:var(--color-texto-principal);background-color:var(--color-fondo);overflow-x:hidden}h1,h2,h3{font-family:var(--fuente-titulos);font-weight:700;margin:10px 0}p{line-height:1.6;font-size:1rem}#portada{background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url(portada.jpg);background-size:cover;background-position:center;height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;color:var(--color-texto-secundario);position:fixed;top:0;left:0;width:100%;z-index:100;transition:opacity 1s ease-out}#portada.oculta{opacity:0;pointer-events:none}.portada-contenido h1{font-size:4.5rem;margin-bottom:0}.portada-contenido p{font-size:1.5rem}.boton-invitacion{display:inline-block;padding:15px 30px;background-color:var(--color-acento);color:var(--color-texto-secundario);text-decoration:none;border-radius:5px;font-size:1.2rem;transition:background-color .3s ease;cursor:pointer}.boton-invitacion:hover{background-color:var(--color-acento-oscuro)}.seccion-wrapper{position:relative;display:grid;grid-template-columns:1fr;grid-template-rows:1fr}.seccion-imagen-sticky{grid-column:1/-1;grid-row:1/-1;position:sticky;top:0;height:100vh;background-size:cover;background-position:center}.seccion-contenido-solido{grid-column:1/-1;grid-row:1/-1;position:relative;background-color:var(--color-fondo);padding:120px 40px;text-align:center;margin-top:100vh;z-index:2}.contenido-interno{max-width:800px;margin:0 auto}#galeria{padding:80px 40px;background-image:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url(galeria.jpg);background-attachment:fixed;background-size:cover;color:var(--color-texto-secundario);position:relative;z-index:3}.galeria-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px;width:100%;max-width:1200px;margin:0 auto}.galeria-grid img{width:100%;height:100%;object-fit:cover;border-radius:8px;transition:transform .3s ease}.galeria-grid img:hover{transform:scale(1.05)}#contador-contenedor{display:flex;justify-content:center;gap:15px;margin-bottom:20px;flex-wrap:wrap}.caja-contador{background-color:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1);padding:15px;border-radius:8px;min-width:90px}.caja-contador span{font-size:2.5rem;font-weight:700;color:var(--color-texto-principal)}.caja-contador .etiqueta{font-size:.8rem;text-transform:uppercase;color:var(--color-texto-principal)}.boton-calendario{display:inline-block;background-color:transparent;border:1px solid var(--color-texto-principal);color:var(--color-texto-principal);padding:10px 20px;border-radius:5px;text-decoration:none;font-size:1rem;transition:all .3s ease}.boton-calendario:hover{background-color:var(--color-texto-principal);color:var(--color-fondo)}.cita-religiosa{font-style:italic;font-family:var(--fuente-elegante);font-size:1.5rem;max-width:700px;margin:0 auto 30px}.texto-invitacion{font-size:1.1rem;margin:20px 0;line-height:1.7}.nombres-anfitriones{font-family:var(--fuente-elegante);font-size:3rem;font-weight:700;margin:15px 0}.nombres-padres-novio{font-family:var(--fuente-elegante);font-size:2rem;font-weight:400;margin:15px 0}.nombres-boda{font-family:var(--fuente-elegante);font-style:italic;font-size:5rem;margin:25px 0 10px;line-height:1}.lista-itinerario{width:100%}.item-itinerario{display:flex;justify-content:space-between;align-items:center;padding:25px 10px;border-bottom:1px solid rgba(0,0,0,.1)}.item-itinerario:last-child{border-bottom:none}.icono-evento{font-size:2rem;color:var(--color-acento);margin-right:20px}.detalle-evento{text-align:left;flex-grow:1}.detalle-evento h3{margin:0;font-size:1.8rem}.detalle-evento p{margin:0;font-size:1.1rem}.boton-mapa-claro{display:inline-block;padding:10px 20px;border:2px solid var(--color-acento);color:var(--color-acento);text-decoration:none;border-radius:5px;margin-left:20px;transition:background-color .3s ease,color .3s ease;white-space:nowrap}.boton-mapa-claro:hover{background-color:var(--color-acento);color:var(--color-fondo)}.vestimenta-texto{font-size:3rem;font-family:var(--fuente-titulos);margin-bottom:5px}.subtexto-vestimenta{font-size:1rem;font-style:italic;margin-top:0}#rsvp-form{max-width:500px;margin:20px auto 0}#rsvp-form button,#rsvp-form input,#rsvp-form select{width:100%;padding:15px;margin-top:10px;border-radius:5px;border:1px solid rgba(0,0,0,.2);font-size:1rem;box-sizing:border-box;font-family:var(--fuente-texto)}#rsvp-form button{border:none;background-color:var(--color-acento);color:#fff;cursor:pointer;transition:background-color .3s ease}#rsvp-form button:hover{background-color:var(--color-acento-oscuro)}.fade-in-on-scroll{opacity:0;transition:opacity 1.2s ease-in-out}.fade-in-on-scroll.is-visible{opacity:1}
+        :root{--color-fondo:#ffffff;--color-texto-principal:#292828;--color-texto-secundario:#ffffff;--color-acento:#8a7967;--color-acento-oscuro:#6d5f50;--fuente-titulos:'Playfair Display',serif;--fuente-texto:'Montserrat',sans-serif;--fuente-elegante:'Cormorant Garamond',serif}html{scroll-behavior:smooth}body{margin:0;font-family:var(--fuente-texto);color:var(--color-texto-principal);background-color:var(--color-fondo);overflow-x:hidden}h1,h2,h3{font-family:var(--fuente-titulos);font-weight:700;margin:10px 0}p{line-height:1.6;font-size:1rem}#portada{background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url(portada.jpg);background-size:cover;background-position:center;height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;color:var(--color-texto-secundario);position:fixed;top:0;left:0;width:100%;z-index:100;transition:opacity 1s ease-out}#portada.oculta{opacity:0;pointer-events:none}.portada-contenido h1{font-size:4.5rem;margin-bottom:0}.portada-contenido p{font-size:1.5rem}.boton-invitacion{display:inline-block;padding:15px 30px;background-color:var(--color-acento);color:var(--color-texto-secundario);text-decoration:none;border-radius:5px;font-size:1.2rem;transition:background-color .3s ease;cursor:pointer}.boton-invitacion:hover{background-color:var(--color-acento-oscuro)}.seccion-wrapper{position:relative;display:grid;grid-template-columns:1fr;grid-template-rows:1fr}.seccion-imagen-sticky{grid-column:1/-1;grid-row:1/-1;position:sticky;top:0;height:100vh;background-size:cover;background-position:center}.seccion-contenido-solido{grid-column:1/-1;grid-row:1/-1;position:relative;background-color:var(--color-fondo);padding:120px 40px;text-align:center;margin-top:100vh;z-index:2}.contenido-interno{max-width:800px;margin:0 auto}#galeria{padding:80px 40px;background-image:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url(galeria.jpg);background-attachment:fixed;background-size:cover;color:var(--color-texto-secundario);position:relative;z-index:3}.galeria-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px;width:100%;max-width:1200px;margin:0 auto}.galeria-grid img{width:100%;height:100%;object-fit:cover;border-radius:8px;transition:transform .3s ease}.galeria-grid img:hover{transform:scale(1.05)}#contador-contenedor{display:flex;justify-content:center;gap:15px;margin-bottom:20px;flex-wrap:wrap}.caja-contador{background-color:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1);padding:15px;border-radius:8px;min-width:90px}.caja-contador span{font-size:2.5rem;font-weight:700;color:var(--color-texto-principal)}.caja-contador .etiqueta{font-size:.8rem;text-transform:uppercase;color:var(--color-texto-principal)}.boton-calendario{display:inline-block;background-color:transparent;border:1px solid var(--color-texto-principal);color:var(--color-texto-principal);padding:10px 20px;border-radius:5px;text-decoration:none;font-size:1rem;transition:all .3s ease}.boton-calendario:hover{background-color:var(--color-texto-principal);color:var(--color-fondo)}.cita-religiosa{font-style:italic;font-family:var(--fuente-elegante);font-size:1.5rem;max-width:700px;margin:0 auto 30px}.texto-invitacion{font-size:1.1rem;margin:20px 0;line-height:1.7}.nombres-anfitriones{font-family:var(--fuente-elegante);font-size:3rem;font-weight:700;margin:15px 0}.nombres-padres-novio{font-family:var(--fuente-elegante);font-size:2rem;font-weight:400;margin:15px 0}.nombres-boda{font-family:var(--fuente-elegante);font-style:italic;font-size:5rem;margin:25px 0 10px;line-height:1}.lista-itinerario{width:100%}.item-itinerario{display:flex;justify-content:space-between;align-items:center;padding:25px 10px;border-bottom:1px solid rgba(0,0,0,.1)}.item-itinerario:last-child{border-bottom:none}.icono-evento{font-size:2rem;color:var(--color-acento);margin-right:20px}.detalle-evento{text-align:left;flex-grow:1}.detalle-evento h3{margin:0;font-size:1.8rem}.detalle-evento p{margin:0;font-size:1.1rem}.boton-mapa-claro{display:inline-block;padding:10px 20px;border:2px solid var(--color-acento);color:var(--color-acento);text-decoration:none;border-radius:5px;margin-left:20px;transition:background-color .3s ease,color .3s ease;white-space:nowrap}.boton-mapa-claro:hover{background-color:var(--color-acento);color:var(--color-fondo)}.vestimenta-texto{font-size:3rem;font-family:var(--fuente-titulos);margin-bottom:5px}.subtexto-vestimenta{font-size:1rem;font-style:italic;margin-top:0}#rsvp-form{max-width:500px;margin:20px auto 0}#rsvp-form button,#rsvp-form input,#rsvp-form select{width:100%;padding:15px;margin-top:10px;border-radius:5px;border:1px solid rgba(0,0,0,.2);font-size:1rem;box-sizing:border-box;font-family:var(--fuente-texto)}#rsvp-form button{border:none;background-color:var(--color-acento);color:#fff;cursor:pointer;transition:background-color .3s ease}#rsvp-form button:hover{background-color:var(--color-acento-oscuro)}.fade-in-on-scroll{opacity:0;transition:opacity 1.2s ease-in-out}.fade-in-on-scroll.is-visible{opacity:1}
         .espaciador-scroll{min-height:100vh;padding:0!important;background-color:transparent}
         .info-adicional { margin-top: 40px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 30px; }
         .info-regalo { display: flex; align-items: center; justify-content: center; gap: 15px; }
@@ -297,190 +297,202 @@ Muchas gracias.</p>
     <audio id="musica-fondo" src="cancion.mp3" loop></audio>
 
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- CONFIGURACIÓN PRINCIPAL ---
-        const config = {
-            fechaBoda: new Date(2025, 10, 22, 17, 0, 0),
-            tituloCalendario: "Boda Libia & Ernesto",
-            ubicacionCeremonia: "Cuasiparroquia Maria Reina de la Paz, Puerto Vallarta",
-            urlGoogleSheet: "https://script.google.com/macros/s/AKfycbzkqjkqnI0MBZTXPoalzm7tpxkIMcCRgCRpPGwkXmX-0xIubKX9B-91JRIwQsZjmkm0/exec"
-        };
-        // --- LÓGICA DE LA PORTADA, LOGO Y MÚSICA (VERSIÓN SCROLL INTERACTIVO CORREGIDA) ---
-const verInvitacionBtn = document.getElementById('verInvitacionBtn');
-const portada = document.getElementById('portada');
-const seccionLogo = document.getElementById('seccion-logo');
-const logoImg = seccionLogo.querySelector('img');
-const invitacionPrincipal = document.getElementById('invitacion-principal');
-const audio = document.getElementById('musica-fondo');
+document.addEventListener('DOMContentLoaded', () => {
+    // --- CONFIGURACIÓN PRINCIPAL ---
+    const config = {
+        fechaBoda: new Date(2025, 10, 22, 17, 0, 0),
+        tituloCalendario: "Boda Enrique & Alejandra",
+        ubicacionCeremonia: "Lugar de la Ceremonia", // Recuerda actualizar esto
+        urlGoogleSheet: "https://script.google.com/macros/s/AKfycbzkqjkqnI0MBZTXPoalzm7tpxkIMcCRgCRpPGwkXmX-0xIubKX9B-91JRIwQsZjmkm0/exec"
+    };
 
-// Variable para controlar la animación
-let animacionScrollActiva = false;
+    // --- ELEMENTOS DEL DOM (VERSIÓN COMPLETA Y UNIFICADA) ---
+    // Animación
+    const verInvitacionBtn = document.getElementById('verInvitacionBtn');
+    const portada = document.getElementById('portada');
+    const seccionLogo = document.getElementById('seccion-logo');
+    const logoImg = seccionLogo.querySelector('img');
+    const invitacionPrincipal = document.getElementById('invitacion-principal');
+    const audio = document.getElementById('musica-fondo');
+    // Formulario
+    const rsvpForm = document.getElementById('rsvp-form');
+    const asistenciaSelect = document.getElementById('asistencia-select');
+    const acompananteSeccion = document.getElementById('acompanante-seccion');
+    const vieneAcompananteSelect = document.getElementById('viene-acompanante-select');
+    const nombreAcompananteWrapper = document.getElementById('nombre-acompanante-wrapper');
+    const nombreAcompananteInput = document.getElementById('nombre-acompanante-input');
 
-if (verInvitacionBtn) {
-    verInvitacionBtn.addEventListener('click', () => {
-        // 1. Inicia la música y oculta la portada
-        audio.play().catch(error => console.log("La reproducción fue bloqueada."));
-        portada.classList.add('oculta');
+    // --- LÓGICA DE LA PORTADA, LOGO Y MÚSICA (VERSIÓN CON "ATERRIZAJE SUAVE") ---
+    let animacionScrollActiva = false;
+    let virtualScrollY = 0;
+    const scrollMax = 1000; 
 
-        // 2. Muestra la sección del logo y prepara la animación
-        setTimeout(() => {
-            seccionLogo.classList.add('visible');
-            invitacionPrincipal.style.visibility = 'visible';
-            invitacionPrincipal.style.opacity = '0';
-            
-            // Activa la escucha del evento de scroll
-            animacionScrollActiva = true; 
-            
-            // Llevamos al usuario al inicio de la página para asegurar que el scroll comience en 0
-            window.scrollTo(0, 0);
+    if (verInvitacionBtn) {
+        verInvitacionBtn.addEventListener('click', () => {
+            audio.play().catch(error => console.log("La reproducción fue bloqueada."));
+            portada.classList.add('oculta');
 
-        }, 1000); // Demora para una transición suave
-    });
-}
-
-// --- LÓGICA DE LA ANIMACIÓN POR SCROLL ---
-window.addEventListener('scroll', () => {
-    // Solo ejecuta la animación si está activa
-    if (!animacionScrollActiva) return;
-
-    // Calculamos el progreso del scroll (de 0 a 1)
-    const scrollMax = 500; 
-    let progreso = window.scrollY / scrollMax;
-    if (progreso > 1) progreso = 1;
-
-    // --- Aplicamos los efectos basados en el progreso ---
-    // 1. El logo crece un 50%
-    const escala = 1 + (progreso * 0.5);
-    logoImg.style.transform = `scale(${escala})`;
-
-    // 2. El logo se desvanece
-    const opacidadLogo = 1 - progreso;
-    seccionLogo.style.opacity = opacidadLogo;
-
-    // 3. La invitación aparece (Disolvencia cruzada)
-    invitacionPrincipal.style.opacity = progreso;
-
-    // --- Final de la animación ---
-    if (progreso >= 1) {
-        // Desactivamos la animación y limpiamos los elementos que ya no se usarán
-        animacionScrollActiva = false;
-        seccionLogo.style.display = 'none';
-        portada.style.display = 'none';
+            setTimeout(() => {
+                seccionLogo.classList.add('visible');
+                invitacionPrincipal.style.visibility = 'visible';
+                invitacionPrincipal.style.opacity = '0';
+                logoImg.style.transform = 'scale(1.25)';
+                document.body.style.overflow = 'hidden';
+                animacionScrollActiva = true; 
+            }, 1000); 
+        });
     }
-});
+
+    window.addEventListener('wheel', (event) => {
+        if (!animacionScrollActiva) return;
+        event.preventDefault();
+
+        virtualScrollY += event.deltaY * 0.5;
+        if (virtualScrollY < 0) virtualScrollY = 0;
+        if (virtualScrollY > scrollMax) virtualScrollY = scrollMax;
+
+        let progreso = virtualScrollY / scrollMax;
+        
+        const escala = 1.25 + (progreso * 0.75);
+        logoImg.style.transform = `scale(${escala})`;
+
+        const opacidadLogo = 1 - progreso;
+        seccionLogo.style.opacity = opacidadLogo;
+
+        invitacionPrincipal.style.opacity = progreso;
+
+        if (progreso >= 1) {
+            animacionScrollActiva = false;
+            seccionLogo.style.display = 'none';
+            portada.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+    }, { passive: false });
+
+    // --- LÓGICA PARA ANIMACIONES AL HACER SCROLL (SECCIÓN RESTAURADA) ---
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, { threshold: 0.01 });
+
+    document.querySelectorAll('.fade-in-on-scroll').forEach(section => {
+        observer.observe(section);
+    });
     
-        // --- LÓGICA DEL CONTADOR REGRESIVO ---
-        const fechaEvento = config.fechaBoda.getTime();
-        const intervalo = setInterval(function() {
-            const ahora = new Date().getTime();
-            const distancia = fechaEvento - ahora;
-            const diasEl = document.getElementById('dias'),
-                  horasEl = document.getElementById('horas'),
-                  minutosEl = document.getElementById('minutos'),
-                  segundosEl = document.getElementById('segundos');
+    // --- LÓGICA DEL CONTADOR REGRESIVO ---
+    const fechaEvento = config.fechaBoda.getTime();
+    const intervalo = setInterval(function() {
+        const ahora = new Date().getTime();
+        const distancia = fechaEvento - ahora;
+        const diasEl = document.getElementById('dias'),
+              horasEl = document.getElementById('horas'),
+              minutosEl = document.getElementById('minutos'),
+              segundosEl = document.getElementById('segundos');
     
-            if (distancia < 0) {
-                clearInterval(intervalo);
-                const contadorContenedor = document.getElementById('contador-contenedor');
-                if (contadorContenedor) {
-                    contadorContenedor.innerHTML = "<h2>¡El gran día ha llegado!</h2>";
-                }
+        if (distancia < 0) {
+            clearInterval(intervalo);
+            const contadorContenedor = document.getElementById('contador-contenedor');
+            if (contadorContenedor) {
+                contadorContenedor.innerHTML = "<h2>¡El gran día ha llegado!</h2>";
+            }
+            return;
+        }
+    
+        const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+    
+        if (diasEl) diasEl.innerText = String(dias).padStart(2, '0');
+        if (horasEl) horasEl.innerText = String(horas).padStart(2, '0');
+        if (minutosEl) minutosEl.innerText = String(minutos).padStart(2, '0');
+        if (segundosEl) segundosEl.innerText = String(segundos).padStart(2, '0');
+    }, 1000);
+    
+    // --- LÓGICA DEL BOTÓN "AGREGAR A CALENDARIO" ---
+    function generarLinkCalendario() {
+        const fechaInicio = config.fechaBoda;
+        const fechaFin = new Date(fechaInicio.getTime() + (6 * 60 * 60 * 1000));
+        const formatoFechaUTC = (fecha) => fecha.toISOString().replace(/-|:|\.\d+/g, '');
+    
+        const url = new URL('https://www.google.com/calendar/render');
+        url.searchParams.append('action', 'TEMPLATE');
+        url.searchParams.append('text', config.tituloCalendario);
+        url.searchParams.append('dates', `${formatoFechaUTC(fechaInicio)}/${formatoFechaUTC(fechaFin)}`);
+        url.searchParams.append('location', config.ubicacionCeremonia);
+        url.searchParams.append('details', `Acompáñanos a celebrar la boda de ${config.tituloCalendario}. Detalles en: ${window.location.href}`);
+    
+        const boton = document.getElementById('botonCalendario');
+        if (boton) boton.href = url.toString();
+    }
+    generarLinkCalendario();
+    
+    // --- LÓGICA DEL FORMULARIO DE ACOMPAÑANTE ---
+    if (asistenciaSelect) {
+        asistenciaSelect.addEventListener('change', (e) => {
+            if (e.target.value === 'Sí, asistiré') {
+                acompananteSeccion.style.display = 'block';
+            } else {
+                acompananteSeccion.style.display = 'none';
+                nombreAcompananteWrapper.style.display = 'none';
+                nombreAcompananteInput.required = false;
+                nombreAcompananteInput.value = '';
+            }
+        });
+    }
+    
+    if (vieneAcompananteSelect) {
+        vieneAcompananteSelect.addEventListener('change', (e) => {
+            if (e.target.value === 'Sí') {
+                nombreAcompananteWrapper.style.display = 'block';
+                nombreAcompananteInput.required = true;
+            } else {
+                nombreAcompananteWrapper.style.display = 'none';
+                nombreAcompananteInput.required = false;
+                nombreAcompananteInput.value = '';
+            }
+        });
+    }
+    
+    // --- LÓGICA DEL ENVÍO DEL FORMULARIO DE CONFIRMACIÓN (RSVP) ---
+    if (rsvpForm) {
+        rsvpForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            
+            submitButton.disabled = true;
+            submitButton.textContent = 'Enviando...';
+    
+            const data = new FormData(this);
+            const action = config.urlGoogleSheet;
+    
+            if (!action || action === "URL_DE_TU_APP_WEB_AQUÍ") {
+                alert("La URL para confirmar la asistencia no está configurada.");
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
                 return;
             }
     
-            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-            const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
-    
-            if (diasEl) diasEl.innerText = String(dias).padStart(2, '0');
-            if (horasEl) horasEl.innerText = String(horas).padStart(2, '0');
-            if (minutosEl) minutosEl.innerText = String(minutos).padStart(2, '0');
-            if (segundosEl) segundosEl.innerText = String(segundos).padStart(2, '0');
-        }, 1000);
-    
-        // --- LÓGICA DEL BOTÓN "AGREGAR A CALENDARIO" ---
-        function generarLinkCalendario() {
-            const fechaInicio = config.fechaBoda;
-            const fechaFin = new Date(fechaInicio.getTime() + (6 * 60 * 60 * 1000));
-            const formatoFechaUTC = (fecha) => fecha.toISOString().replace(/-|:|\.\d+/g, '');
-    
-            const url = new URL('https://www.google.com/calendar/render');
-            url.searchParams.append('action', 'TEMPLATE');
-            url.searchParams.append('text', config.tituloCalendario);
-            url.searchParams.append('dates', `${formatoFechaUTC(fechaInicio)}/${formatoFechaUTC(fechaFin)}`);
-            url.searchParams.append('location', config.ubicacionCeremonia);
-            url.searchParams.append('details', `Acompáñanos a celebrar la boda de ${config.tituloCalendario}. Detalles en: ${window.location.href}`);
-    
-            const boton = document.getElementById('botonCalendario');
-            if (boton) boton.href = url.toString();
-        }
-        generarLinkCalendario();
-    
-        // --- LÓGICA DEL FORMULARIO DE ACOMPAÑANTE ---
-        if (asistenciaSelect) {
-            asistenciaSelect.addEventListener('change', (e) => {
-                if (e.target.value === 'Sí, asistiré') {
-                    acompananteSeccion.style.display = 'block';
+            try {
+                const response = await fetch(action, { method: 'POST', body: data });
+                if (response.ok) {
+                    document.getElementById('mensaje-gracias').style.display = 'block';
+                    this.style.display = 'none';
                 } else {
-                    acompananteSeccion.style.display = 'none';
-                    nombreAcompananteWrapper.style.display = 'none';
-                    nombreAcompananteInput.required = false;
-                    nombreAcompananteInput.value = '';
+                    throw new Error('Error al enviar la confirmación.');
                 }
-            });
-        }
-    
-        if (vieneAcompananteSelect) {
-            vieneAcompananteSelect.addEventListener('change', (e) => {
-                if (e.target.value === 'Sí') {
-                    nombreAcompananteWrapper.style.display = 'block';
-                    nombreAcompananteInput.required = true;
-                } else {
-                    nombreAcompananteWrapper.style.display = 'none';
-                    nombreAcompananteInput.required = false;
-                    nombreAcompananteInput.value = '';
-                }
-            });
-        }
-    
-        // --- LÓGICA DEL ENVÍO DEL FORMULARIO DE CONFIRMACIÓN (RSVP) ---
-        if (rsvpForm) {
-            rsvpForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                const submitButton = this.querySelector('button[type="submit"]');
-                const originalButtonText = submitButton.textContent;
-                
-                submitButton.disabled = true;
-                submitButton.textContent = 'Enviando...';
-    
-                const data = new FormData(this);
-                const action = config.urlGoogleSheet;
-    
-                if (!action || action === "URL_DE_TU_APP_WEB_AQUÍ") {
-                    alert("La URL para confirmar la asistencia no está configurada.");
-                    submitButton.disabled = false;
-                    submitButton.textContent = originalButtonText;
-                    return;
-                }
-    
-                try {
-                    const response = await fetch(action, { method: 'POST', body: data });
-                    if (response.ok) {
-                        document.getElementById('mensaje-gracias').style.display = 'block';
-                        this.style.display = 'none';
-                    } else {
-                        throw new Error('Error al enviar la confirmación.');
-                    }
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('Hubo un problema al enviar tu confirmación. Por favor, inténtalo de nuevo.');
-                    submitButton.disabled = false;
-                    submitButton.textContent = originalButtonText;
-                }
-            });
-        }
-    });
-    </script>
-</body>
-</html>
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Hubo un problema al enviar tu confirmación. Por favor, inténtalo de nuevo.');
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
+        });
+    }
+});
+</script>
