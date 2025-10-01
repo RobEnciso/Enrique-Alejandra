@@ -302,19 +302,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const config = {
         fechaBoda: new Date(2025, 10, 22, 17, 0, 0),
         tituloCalendario: "Boda Enrique & Alejandra",
-        ubicacionCeremonia: "Lugar de la Ceremonia", // Recuerda actualizar esto
+        ubicacionCeremonia: "Lugar de la Ceremonia",
         urlGoogleSheet: "https://script.google.com/macros/s/AKfycbzkqjkqnI0MBZTXPoalzm7tpxkIMcCRgCRpPGwkXmX-0xIubKX9B-91JRIwQsZjmkm0/exec"
     };
 
     // --- ELEMENTOS DEL DOM (VERSIÓN COMPLETA Y UNIFICADA) ---
-    // Animación
     const verInvitacionBtn = document.getElementById('verInvitacionBtn');
     const portada = document.getElementById('portada');
     const seccionLogo = document.getElementById('seccion-logo');
     const logoImg = seccionLogo.querySelector('img');
     const invitacionPrincipal = document.getElementById('invitacion-principal');
     const audio = document.getElementById('musica-fondo');
-    // Formulario
     const rsvpForm = document.getElementById('rsvp-form');
     const asistenciaSelect = document.getElementById('asistencia-select');
     const acompananteSeccion = document.getElementById('acompanante-seccion');
@@ -322,10 +320,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const nombreAcompananteWrapper = document.getElementById('nombre-acompanante-wrapper');
     const nombreAcompananteInput = document.getElementById('nombre-acompanante-input');
 
-    // --- LÓGICA DE LA PORTADA, LOGO Y MÚSICA (VERSIÓN CON "ATERRIZAJE SUAVE") ---
+    // --- LÓGICA DE LA PORTADA (VERSIÓN FINAL COMPATIBLE CON MÓVIL Y ESCRITORIO) ---
     let animacionScrollActiva = false;
     let virtualScrollY = 0;
-    const scrollMax = 1000; 
+    const scrollMax = 1200; // Aumentado para una animación más lenta y apreciable
+    let touchStartY = 0; // Para registrar el inicio del toque en móviles
 
     if (verInvitacionBtn) {
         verInvitacionBtn.addEventListener('click', () => {
@@ -343,16 +342,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    window.addEventListener('wheel', (event) => {
-        if (!animacionScrollActiva) return;
-        event.preventDefault();
-
-        virtualScrollY += event.deltaY * 0.5;
-        if (virtualScrollY < 0) virtualScrollY = 0;
-        if (virtualScrollY > scrollMax) virtualScrollY = scrollMax;
-
-        let progreso = virtualScrollY / scrollMax;
-        
+    // Función que actualiza la animación
+    function actualizarAnimacion(progreso) {
         const escala = 1.25 + (progreso * 0.75);
         logoImg.style.transform = `scale(${escala})`;
 
@@ -368,6 +359,35 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = 'auto';
             window.scrollTo({ top: 0, behavior: 'auto' });
         }
+    }
+
+    // --- Listener para Escritorio (Rueda del ratón) ---
+    window.addEventListener('wheel', (event) => {
+        if (!animacionScrollActiva) return;
+        event.preventDefault();
+        virtualScrollY += event.deltaY * 0.5;
+        if (virtualScrollY < 0) virtualScrollY = 0;
+        if (virtualScrollY > scrollMax) virtualScrollY = scrollMax;
+        actualizarAnimacion(virtualScrollY / scrollMax);
+    }, { passive: false });
+
+    // --- Listeners para Móvil (Gestos táctiles) ---
+    window.addEventListener('touchstart', (event) => {
+        if (!animacionScrollActiva) return;
+        touchStartY = event.touches[0].clientY; // Guarda la posición inicial del dedo
+    });
+
+    window.addEventListener('touchmove', (event) => {
+        if (!animacionScrollActiva) return;
+        event.preventDefault();
+        const touchCurrentY = event.touches[0].clientY;
+        const deltaY = touchStartY - touchCurrentY; // Calcula cuánto se ha movido el dedo
+        touchStartY = touchCurrentY; // Actualiza la posición para el siguiente movimiento
+
+        virtualScrollY += deltaY * 2; // Multiplicamos por 2 para más sensibilidad táctil
+        if (virtualScrollY < 0) virtualScrollY = 0;
+        if (virtualScrollY > scrollMax) virtualScrollY = scrollMax;
+        actualizarAnimacion(virtualScrollY / scrollMax);
     }, { passive: false });
 
     // --- LÓGICA PARA ANIMACIONES AL HACER SCROLL (SECCIÓN RESTAURADA) ---
@@ -388,29 +408,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const intervalo = setInterval(function() {
         const ahora = new Date().getTime();
         const distancia = fechaEvento - ahora;
-        const diasEl = document.getElementById('dias'),
-              horasEl = document.getElementById('horas'),
-              minutosEl = document.getElementById('minutos'),
-              segundosEl = document.getElementById('segundos');
-    
         if (distancia < 0) {
             clearInterval(intervalo);
-            const contadorContenedor = document.getElementById('contador-contenedor');
-            if (contadorContenedor) {
-                contadorContenedor.innerHTML = "<h2>¡El gran día ha llegado!</h2>";
-            }
+            document.getElementById('contador-contenedor').innerHTML = "<h2>¡El gran día ha llegado!</h2>";
             return;
         }
-    
-        const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-        const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-        const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
-    
-        if (diasEl) diasEl.innerText = String(dias).padStart(2, '0');
-        if (horasEl) horasEl.innerText = String(horas).padStart(2, '0');
-        if (minutosEl) minutosEl.innerText = String(minutos).padStart(2, '0');
-        if (segundosEl) segundosEl.innerText = String(segundos).padStart(2, '0');
+        document.getElementById('dias').innerText = String(Math.floor(distancia / (1000 * 60 * 60 * 24))).padStart(2, '0');
+        document.getElementById('horas').innerText = String(Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+        document.getElementById('minutos').innerText = String(Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+        document.getElementById('segundos').innerText = String(Math.floor((distancia % (1000 * 60)) / 1000)).padStart(2, '0');
     }, 1000);
     
     // --- LÓGICA DEL BOTÓN "AGREGAR A CALENDARIO" ---
@@ -418,43 +424,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const fechaInicio = config.fechaBoda;
         const fechaFin = new Date(fechaInicio.getTime() + (6 * 60 * 60 * 1000));
         const formatoFechaUTC = (fecha) => fecha.toISOString().replace(/-|:|\.\d+/g, '');
-    
         const url = new URL('https://www.google.com/calendar/render');
         url.searchParams.append('action', 'TEMPLATE');
         url.searchParams.append('text', config.tituloCalendario);
         url.searchParams.append('dates', `${formatoFechaUTC(fechaInicio)}/${formatoFechaUTC(fechaFin)}`);
         url.searchParams.append('location', config.ubicacionCeremonia);
         url.searchParams.append('details', `Acompáñanos a celebrar la boda de ${config.tituloCalendario}. Detalles en: ${window.location.href}`);
-    
-        const boton = document.getElementById('botonCalendario');
-        if (boton) boton.href = url.toString();
+        document.getElementById('botonCalendario').href = url.toString();
     }
     generarLinkCalendario();
     
     // --- LÓGICA DEL FORMULARIO DE ACOMPAÑANTE ---
     if (asistenciaSelect) {
         asistenciaSelect.addEventListener('change', (e) => {
-            if (e.target.value === 'Sí, asistiré') {
-                acompananteSeccion.style.display = 'block';
-            } else {
-                acompananteSeccion.style.display = 'none';
-                nombreAcompananteWrapper.style.display = 'none';
-                nombreAcompananteInput.required = false;
-                nombreAcompananteInput.value = '';
-            }
+            acompananteSeccion.style.display = (e.target.value === 'Sí, asistiré') ? 'block' : 'none';
         });
     }
-    
     if (vieneAcompananteSelect) {
         vieneAcompananteSelect.addEventListener('change', (e) => {
-            if (e.target.value === 'Sí') {
-                nombreAcompananteWrapper.style.display = 'block';
-                nombreAcompananteInput.required = true;
-            } else {
-                nombreAcompananteWrapper.style.display = 'none';
-                nombreAcompananteInput.required = false;
-                nombreAcompananteInput.value = '';
-            }
+            nombreAcompananteWrapper.style.display = (e.target.value === 'Sí') ? 'block' : 'none';
+            nombreAcompananteInput.required = (e.target.value === 'Sí');
         });
     }
     
@@ -463,23 +452,10 @@ document.addEventListener('DOMContentLoaded', () => {
         rsvpForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             const submitButton = this.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.textContent;
-            
             submitButton.disabled = true;
             submitButton.textContent = 'Enviando...';
-    
-            const data = new FormData(this);
-            const action = config.urlGoogleSheet;
-    
-            if (!action || action === "URL_DE_TU_APP_WEB_AQUÍ") {
-                alert("La URL para confirmar la asistencia no está configurada.");
-                submitButton.disabled = false;
-                submitButton.textContent = originalButtonText;
-                return;
-            }
-    
             try {
-                const response = await fetch(action, { method: 'POST', body: data });
+                const response = await fetch(config.urlGoogleSheet, { method: 'POST', body: new FormData(this) });
                 if (response.ok) {
                     document.getElementById('mensaje-gracias').style.display = 'block';
                     this.style.display = 'none';
@@ -490,7 +466,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('Error:', error);
                 alert('Hubo un problema al enviar tu confirmación. Por favor, inténtalo de nuevo.');
                 submitButton.disabled = false;
-                submitButton.textContent = originalButtonText;
+                submitButton.textContent = 'Enviar Confirmación';
             }
         });
     }
