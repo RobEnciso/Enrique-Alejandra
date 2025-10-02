@@ -70,7 +70,7 @@
             text-align: center;
         }
 
-        /* ===== ESTILOS PARA LA NUEVA SECCIÓN DE LOGO INTERACTIVA ===== */
+        /* ===== ESTILOS PARA LA NUEVA SECCIÓN DE LOGO INTERACTIVA (VERSIÓN MEJORADA) ===== */
 #seccion-logo {
     position: fixed;
     top: 0;
@@ -78,24 +78,34 @@
     width: 100%;
     height: 100vh;
     background-color: var(--color-fondo);
+    
+    /* --- INICIO DE LOS CAMBIOS PARA CENTRADO PERFECTO --- */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 4; /* <-- Aseguramos que esté en una capa alta */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;    /* Centra verticalmente */
+    padding: 2rem;          /* Añade un margen interno para que el logo no toque los bordes */
+    box-sizing: border-box; /* Asegura que el padding no "empuje" el tamaño total */
+    /* --- FIN DE LOS CAMBIOS --- */
+
+    z-index: 4;
     opacity: 0;
     pointer-events: none;
     transition: opacity 1.5s ease-in-out;
 }
+
 #seccion-logo.visible {
-    opacity: 1; /* Se hace visible con JS */
+    opacity: 1;
     pointer-events: auto;
 }
+
 #seccion-logo img {
-    /* Tamaño inicial más grande para móviles y adaptable a escritorio */
-    width: 100%;
-    max-width: 600px; /* Límite para pantallas grandes */
-    height: auto;
-    /* La transformación la controlará JS */
+    /* --- INICIO DE LOS CAMBIOS PARA TAMAÑO IDEAL --- */
+    width: 100%;          /* El logo ocupará el 100% del contenedor (con su padding) */
+    max-width: 550px;     /* Aumentamos el límite para pantallas grandes. Puedes ajustarlo. */
+    height: auto;           /* La altura se ajusta automáticamente para no deformar la imagen */
+    object-fit: contain;  /* Se asegura que la imagen escale correctamente dentro de su espacio */
+    /* --- FIN DE LOS CAMBIOS --- */
+    
     transform: scale(1.0);
 }
         /* ===== FIX DEFINITIVO: Forzar visibilidad de la galería ===== */
