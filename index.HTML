@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuestra Boda - Enrique y Alejandra</title>
-    
+
     <meta property="og:title" content="Nuestra Boda - Enrique y Alejandra">
     <meta property="og:description" content="Tenemos el honor de invitarte a celebrar nuestro amor. ¡Acompáñanos en este día tan especial!">
     <meta property="og:image" content="https://enriqueyalejandra.netlify.app/miniatura.jpg">
     <meta property="og:url" content="https://enriqueyalejandra.netlify.app/">
     <meta property="og:type" content="website">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
@@ -81,8 +81,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 99;
-    opacity: 0; /* Inicia invisible */
+    z-index: 4; /* <-- Aseguramos que esté en una capa alta */
+    opacity: 0;
     pointer-events: none;
     transition: opacity 1.5s ease-in-out;
 }
@@ -92,11 +92,11 @@
 }
 #seccion-logo img {
     /* Tamaño inicial más grande para móviles y adaptable a escritorio */
-    width: 70%; 
+    width: 70%;
     max-width: 450px; /* Límite para pantallas grandes */
     height: auto;
     /* La transformación la controlará JS */
-    transform: scale(1.0); 
+    transform: scale(1.0);
 }
         /* ===== FIX DEFINITIVO: Forzar visibilidad de la galería ===== */
 #galeria .fade-in-on-scroll {
@@ -111,6 +111,25 @@
             to {
                 transform: scale(1.05);
                 opacity: 1;
+            }
+        }
+        /* ===== ANIMACIÓN DEL LOGO (NUEVA) ===== */
+        @keyframes logoZoomElegante {
+            0% {
+                transform: scale(1.0);
+                opacity: 0.5;
+            }
+            25% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+            75% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
             }
         }
     </style>
@@ -128,7 +147,7 @@
     <div id="seccion-logo">
         <img src="logo.png" alt="Logo de la Boda">
     </div>
-    <main id="invitacion-principal" style="visibility: hidden;">
+    <main id="invitacion-principal" style="visibility: hidden; opacity: 0; transition: opacity 1.5s ease-in-out;">
 
         <article class="seccion-wrapper" id="save-the-date">
             <div class="seccion-imagen-sticky" style="background-image: url('foto_vertical.jpg');"></div>
@@ -146,7 +165,7 @@
                 </div>
             </div>
         </article>
-        
+
         <article class="seccion-wrapper" id="aniversario">
             <div class="seccion-imagen-sticky" style="background-image: url('padresjovenes.jpg');"></div>
             <div class="seccion-contenido-solido">
@@ -163,7 +182,7 @@ Que es el vínculo perfecto”</p>
             <div class="seccion-contenido-solido espaciador-scroll">
                 </div>
         </article>
-        
+
 
         <article class="seccion-wrapper" id="enlace">
             <div class="seccion-imagen-sticky" style="background-image: url('padresestudio.jpg');"></div>
@@ -176,7 +195,7 @@ De familia y amigos para celebrar el amor que nos une.</p>
                 </div>
             </div>
         </article>
-        
+
         <article class="seccion-wrapper" id="padrinos">
             <div class="seccion-imagen-sticky" style="background-image: url('padrinos.jpg');"></div>
             <div class="seccion-contenido-solido">
@@ -231,7 +250,7 @@ De familia y amigos para celebrar el amor que nos une.</p>
                             <p>Si tu deseo es tener un detalle con nosotros puedes hacerlo con
 efectivo en sobres que habrá en la fiesta o mesa de regalos Liverpool código 51688739</p>
                         </div>
-                        
+
                     </div>
                 </div>
              </div>
@@ -303,10 +322,10 @@ document.addEventListener('DOMContentLoaded', () => {
         fechaBoda: new Date(2025, 10, 22, 17, 0, 0),
         tituloCalendario: "Boda Enrique & Alejandra",
         ubicacionCeremonia: "Lugar de la Ceremonia",
-        urlGoogleSheet: "https://script.google.com/macros/s/AKfycbzkqjkqnI0MBZTXPoalzm7tpxkIMcCRgCRpPGwkXmX-0xIubKX9B-91JRIwQsZjmkm0/exec"
+        urlGoogleSheet: "URL_DE_TU_GOOGLE_SHEET" // Asegúrate de poner tu URL de Google Sheet aquí
     };
 
-    // --- ELEMENTOS DEL DOM ---
+    // --- ELEMENTOS DEL DOM (COMPLETOS Y CORREGIDOS) ---
     const verInvitacionBtn = document.getElementById('verInvitacionBtn');
     const portada = document.getElementById('portada');
     const seccionLogo = document.getElementById('seccion-logo');
@@ -320,107 +339,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const nombreAcompananteWrapper = document.getElementById('nombre-acompanante-wrapper');
     const nombreAcompananteInput = document.getElementById('nombre-acompanante-input');
 
-    // --- LÓGICA DE LA PORTADA (VERSIÓN FINAL PULIDA CON "EASING") ---
-    let animacionScrollActiva = false;
-    let targetScrollY = 0; // El objetivo al que queremos llegar
-    let currentScrollY = 0; // La posición actual "suavizada"
-    const scrollMax = 1800; // Aumentado para un ritmo más lento
-    let touchStartY = 0;
-
+    // --- LÓGICA DE LA PORTADA (VERSIÓN AUTOMÁTICA MEJORADA) ---
     if (verInvitacionBtn) {
         verInvitacionBtn.addEventListener('click', () => {
-            audio.play().catch(error => console.log("La reproducción fue bloqueada."));
+            // 1. Iniciar música y ocultar portada
+            audio.play().catch(error => console.log("La reproducción de audio fue bloqueada por el navegador."));
             portada.classList.add('oculta');
+
+            // 2. Esperar a que la portada se desvanezca y mostrar el logo
             setTimeout(() => {
                 seccionLogo.classList.add('visible');
+                // Asignar la animación al logo
+                logoImg.style.animation = `logoZoomElegante 3s ease-in-out forwards`;
+            }, 1000); // Coincide con la transición de opacidad de la portada
+
+            // 3. Esperar a que la animación del logo termine para mostrar la invitación
+            setTimeout(() => {
+                // Ocultar la sección del logo
+                seccionLogo.style.display = 'none';
+
+                // Mostrar el contenido principal
                 invitacionPrincipal.style.visibility = 'visible';
-                invitacionPrincipal.style.opacity = '0';
-                logoImg.style.transform = 'scale(2.0)'; // Inicia al doble de tamaño
-                document.body.style.overflow = 'hidden';
-                animacionScrollActiva = true; 
-                iniciarLoopAnimacion(); // Inicia el bucle de animación suave
-            }, 1000); 
+                invitacionPrincipal.style.opacity = '1';
+
+                // Permitir el scroll normal
+                document.body.style.overflow = 'auto';
+
+                // Pequeño truco para asegurar que el scroll se active correctamente
+                window.scrollTo(0, 0);
+            }, 4000); // 1000ms (portada) + 3000ms (animación logo)
         });
     }
-    
-    // Bucle de animación suave que se ejecuta en cada frame
-    function iniciarLoopAnimacion() {
-        if (!animacionScrollActiva) return;
-        
-        // Suavizamos el movimiento: la posición actual se acerca a la objetivo poco a poco
-        currentScrollY += (targetScrollY - currentScrollY) * 0.08; // El 0.08 controla la "inercia"
-        
-        let progreso = currentScrollY / scrollMax;
-        actualizarAnimacion(progreso);
-        
-        requestAnimationFrame(iniciarLoopAnimacion); // Llama al siguiente frame
-    }
 
-    function actualizarAnimacion(progreso) {
-        // Fase 1: Crecimiento (del 0% al 65% del scroll)
-        if (progreso < 0.65) {
-            const progresoFase1 = progreso / 0.65;
-            const escala = 2.0 + (progresoFase1 * 0.5); // Crece de 2.0 a 2.5
-            logoImg.style.transform = `scale(${escala})`;
-            seccionLogo.style.opacity = 1;
-            invitacionPrincipal.style.opacity = 0;
-        } 
-        // Fase 2: Transición (del 65% al 100% del scroll)
-        else {
-            const progresoFase2 = (progreso - 0.65) / 0.35;
-            logoImg.style.transform = 'scale(2.5)'; // Tamaño fijo
-            const opacidadLogo = 1 - progresoFase2;
-            seccionLogo.style.opacity = opacidadLogo;
-            invitacionPrincipal.style.opacity = progresoFase2;
-        }
-
-        // Final de la animación
-        if (progreso >= 0.99) { // Usamos 0.99 para asegurar que se complete
-            animacionScrollActiva = false;
-            seccionLogo.style.display = 'none';
-            portada.style.display = 'none';
-            
-            // Pausa para apreciar la imagen antes de activar el scroll
-            setTimeout(() => {
-                document.body.style.overflow = 'auto';
-                window.scrollTo({ top: 0, behavior: 'auto' });
-            }, 750); // Pausa de 0.75 segundos
-        }
-    }
-
-    // Listeners que solo actualizan el "objetivo" del scroll
-    window.addEventListener('wheel', (event) => {
-        if (!animacionScrollActiva) return;
-        event.preventDefault();
-        targetScrollY += event.deltaY * 0.5;
-        if (targetScrollY < 0) targetScrollY = 0;
-        if (targetScrollY > scrollMax) targetScrollY = scrollMax;
-    }, { passive: false });
-
-    window.addEventListener('touchstart', (event) => {
-        if (!animacionScrollActiva) return;
-        touchStartY = event.touches[0].clientY;
-    });
-
-    window.addEventListener('touchmove', (event) => {
-        if (!animacionScrollActiva) return;
-        event.preventDefault();
-        const touchCurrentY = event.touches[0].clientY;
-        const deltaY = touchStartY - touchCurrentY;
-        touchStartY = touchCurrentY;
-        targetScrollY += deltaY * 2;
-        if (targetScrollY < 0) targetScrollY = 0;
-        if (targetScrollY > scrollMax) targetScrollY = scrollMax;
-    }, { passive: false });
-
-    // --- LÓGICA PARA ANIMACIONES AL HACER SCROLL (SECCIÓN RESTAURADA) ---
+    // --- LÓGICA PARA ANIMACIONES AL HACER SCROLL ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) entry.target.classList.add('is-visible');
         });
     }, { threshold: 0.01 });
     document.querySelectorAll('.fade-in-on-scroll').forEach(section => observer.observe(section));
-    
+
     // --- LÓGICA DEL CONTADOR REGRESIVO ---
     const fechaEvento = config.fechaBoda.getTime();
     const intervalo = setInterval(() => {
@@ -428,15 +386,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const distancia = fechaEvento - ahora;
         if (distancia < 0) {
             clearInterval(intervalo);
-            document.getElementById('contador-contenedor').innerHTML = "<h2>¡El gran día ha llegado!</h2>";
+            const contadorContenedor = document.getElementById('contador-contenedor');
+            if (contadorContenedor) {
+                contadorContenedor.innerHTML = "<h2>¡El gran día ha llegado!</h2>";
+            }
             return;
         }
-        document.getElementById('dias').innerText = String(Math.floor(distancia / 86400000)).padStart(2, '0');
-        document.getElementById('horas').innerText = String(Math.floor((distancia % 86400000) / 3600000)).padStart(2, '0');
-        document.getElementById('minutos').innerText = String(Math.floor((distancia % 3600000) / 60000)).padStart(2, '0');
-        document.getElementById('segundos').innerText = String(Math.floor((distancia % 60000) / 1000)).padStart(2, '0');
+        const diasEl = document.getElementById('dias');
+        const horasEl = document.getElementById('horas');
+        const minutosEl = document.getElementById('minutos');
+        const segundosEl = document.getElementById('segundos');
+
+        if(diasEl) diasEl.innerText = String(Math.floor(distancia / 86400000)).padStart(2, '0');
+        if(horasEl) horasEl.innerText = String(Math.floor((distancia % 86400000) / 3600000)).padStart(2, '0');
+        if(minutosEl) minutosEl.innerText = String(Math.floor((distancia % 3600000) / 60000)).padStart(2, '0');
+        if(segundosEl) segundosEl.innerText = String(Math.floor((distancia % 60000) / 1000)).padStart(2, '0');
     }, 1000);
-    
+
     // --- LÓGICA DEL BOTÓN "AGREGAR A CALENDARIO" ---
     function generarLinkCalendario() {
         const fechaInicio = config.fechaBoda;
@@ -448,14 +414,24 @@ document.addEventListener('DOMContentLoaded', () => {
         url.searchParams.append('dates', `${formatoFechaUTC(fechaInicio)}/${formatoFechaUTC(fechaFin)}`);
         url.searchParams.append('location', config.ubicacionCeremonia);
         url.searchParams.append('details', `Acompáñanos a celebrar la boda. Detalles en: ${window.location.href}`);
-        document.getElementById('botonCalendario').href = url.toString();
+        const botonCalendario = document.getElementById('botonCalendario');
+        if (botonCalendario) {
+            botonCalendario.href = url.toString();
+        }
     }
     generarLinkCalendario();
-    
+
     // --- LÓGICA DEL FORMULARIO DE ACOMPAÑANTE ---
     if (asistenciaSelect) {
         asistenciaSelect.addEventListener('change', (e) => {
-            acompananteSeccion.style.display = (e.target.value === 'Sí, asistiré') ? 'block' : 'none';
+            if (e.target.value === 'Sí, asistiré') {
+                acompananteSeccion.style.display = 'block';
+            } else {
+                acompananteSeccion.style.display = 'none';
+                nombreAcompananteWrapper.style.display = 'none';
+                nombreAcompananteInput.required = false;
+                nombreAcompananteInput.value = '';
+            }
         });
     }
     if (vieneAcompananteSelect) {
@@ -465,12 +441,20 @@ document.addEventListener('DOMContentLoaded', () => {
             nombreAcompananteInput.required = necesitaAcompanante;
         });
     }
-    
+
     // --- LÓGICA DEL ENVÍO DEL FORMULARIO DE CONFIRMACIÓN (RSVP) ---
     if (rsvpForm) {
         rsvpForm.addEventListener('submit', async function(e) {
             e.preventDefault();
+
+            // Verificación para el desarrollador: asegurar que la URL fue cambiada
+            if (config.urlGoogleSheet === "URL_DE_TU_GOOGLE_SHEET" || !config.urlGoogleSheet) {
+                alert("¡Atención! La URL para confirmar la asistencia no ha sido configurada correctamente. Por favor, contacta a los novios por otro medio.");
+                return;
+            }
+
             const submitButton = this.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
             submitButton.disabled = true;
             submitButton.textContent = 'Enviando...';
             try {
@@ -481,9 +465,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else { throw new Error('Error al enviar.'); }
             } catch (error) {
                 console.error('Error:', error);
-                alert('Hubo un problema al enviar tu confirmación. Por favor, inténtalo de nuevo.');
+                alert('Hubo un problema al enviar tu confirmación. Por favor, inténtalo de nuevo o contacta a los novios.');
                 submitButton.disabled = false;
-                submitButton.textContent = 'Enviar Confirmación';
+                submitButton.textContent = originalButtonText;
             }
         });
     }
