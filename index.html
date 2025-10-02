@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Boda - Enrique y Alejandra</title>
+
+    <meta property="og:title" content="Nuestra Boda - Enrique y Alejandra">
+    <meta property="og:description" content="Tenemos el honor de invitarte a celebrar nuestro amor. ¡Acompáñanos en este día tan especial!">
+    <meta property="og:image" content="https://enriqueyalejandra.netlify.app/miniatura.jpg">
+    <meta property="og:url" content="https://enriqueyalejandra.netlify.app/">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root{--color-fondo:#ffffff;--color-texto-principal:#292828;--color-texto-secundario:#ffffff;--color-acento:#8a7967;--color-acento-oscuro:#6d5f50;--fuente-titulos:'Playfair Display',serif;--fuente-texto:'Montserrat',sans-serif;--fuente-elegante:'Cormorant Garamond',serif}html{scroll-behavior:smooth}body{margin:0;font-family:var(--fuente-texto);color:var(--color-texto-principal);background-color:var(--color-fondo);overflow-x:hidden}h1,h2,h3{font-family:var(--fuente-titulos);font-weight:700;margin:10px 0}p{line-height:1.6;font-size:1rem}#portada{background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url(portada.jpg);background-size:cover;background-position:center;height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;color:var(--color-texto-secundario);position:fixed;top:0;left:0;width:100%;z-index:100;transition:opacity 1s ease-out}#portada.oculta{opacity:0;pointer-events:none}.portada-contenido h1{font-size:4.5rem;margin-bottom:0}.portada-contenido p{font-size:1.5rem}.boton-invitacion{display:inline-block;padding:15px 30px;background-color:var(--color-acento);color:var(--color-texto-secundario);text-decoration:none;border-radius:5px;font-size:1.2rem;transition:background-color .3s ease;cursor:pointer}.boton-invitacion:hover{background-color:var(--color-acento-oscuro)}.seccion-wrapper{position:relative;display:grid;grid-template-columns:1fr;grid-template-rows:1fr}.seccion-imagen-sticky{grid-column:1/-1;grid-row:1/-1;position:sticky;top:0;height:100vh;background-size:cover;background-position:center}.seccion-contenido-solido{grid-column:1/-1;grid-row:1/-1;position:relative;background-color:var(--color-fondo);padding:120px 40px;text-align:center;margin-top:100vh;z-index:2}.contenido-interno{max-width:800px;margin:0 auto}#galeria{padding:80px 40px;background-image:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url(galeria.jpg);background-attachment:fixed;background-size:cover;color:var(--color-texto-secundario);position:relative;z-index:3}.galeria-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px;width:100%;max-width:1200px;margin:0 auto}.galeria-grid img{width:100%;height:100%;object-fit:cover;border-radius:8px;transition:transform .3s ease}.galeria-grid img:hover{transform:scale(1.05)}#contador-contenedor{display:flex;justify-content:center;gap:15px;margin-bottom:20px;flex-wrap:wrap}.caja-contador{background-color:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1);padding:15px;border-radius:8px;min-width:90px}.caja-contador span{font-size:2.5rem;font-weight:700;color:var(--color-texto-principal)}.caja-contador .etiqueta{font-size:.8rem;text-transform:uppercase;color:var(--color-texto-principal)}.boton-calendario{display:inline-block;background-color:transparent;border:1px solid var(--color-texto-principal);color:var(--color-texto-principal);padding:10px 20px;border-radius:5px;text-decoration:none;font-size:1rem;transition:all .3s ease}.boton-calendario:hover{background-color:var(--color-texto-principal);color:var(--color-fondo)}.cita-religiosa{font-style:italic;font-family:var(--fuente-elegante);font-size:1.5rem;max-width:700px;margin:0 auto 30px}.texto-invitacion{font-size:1.1rem;margin:20px 0;line-height:1.7}.nombres-anfitriones{font-family:var(--fuente-elegante);font-size:3rem;font-weight:700;margin:15px 0}.nombres-padres-novio{font-family:var(--fuente-elegante);font-size:2rem;font-weight:400;margin:15px 0}.nombres-boda{font-family:var(--fuente-elegante);font-style:italic;font-size:5rem;margin:25px 0 10px;line-height:1}.lista-itinerario{width:100%}.item-itinerario{display:flex;justify-content:space-between;align-items:center;padding:25px 10px;border-bottom:1px solid rgba(0,0,0,.1)}.item-itinerario:last-child{border-bottom:none}.icono-evento{font-size:2rem;color:var(--color-acento);margin-right:20px}.detalle-evento{text-align:left;flex-grow:1}.detalle-evento h3{margin:0;font-size:1.8rem}.detalle-evento p{margin:0;font-size:1.1rem}.boton-mapa-claro{display:inline-block;padding:10px 20px;border:2px solid var(--color-acento);color:var(--color-acento);text-decoration:none;border-radius:5px;margin-left:20px;transition:background-color .3s ease,color .3s ease;white-space:nowrap}.boton-mapa-claro:hover{background-color:var(--color-acento);color:var(--color-fondo)}.vestimenta-texto{font-size:3rem;font-family:var(--fuente-titulos);margin-bottom:5px}.subtexto-vestimenta{font-size:1rem;font-style:italic;margin-top:0}#rsvp-form{max-width:500px;margin:20px auto 0}#rsvp-form button,#rsvp-form input,#rsvp-form select{width:100%;padding:15px;margin-top:10px;border-radius:5px;border:1px solid rgba(0,0,0,.2);font-size:1rem;box-sizing:border-box;font-family:var(--fuente-texto)}#rsvp-form button{border:none;background-color:var(--color-acento);color:#fff;cursor:pointer;transition:background-color .3s ease}#rsvp-form button:hover{background-color:var(--color-acento-oscuro)}.fade-in-on-scroll{opacity:0;transition:opacity 1.2s ease-in-out}.fade-in-on-scroll.is-visible{opacity:1}
+        .espaciador-scroll{min-height:100vh;padding:0!important;background-color:transparent}
+        .info-adicional { margin-top: 40px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 30px; }
+        .info-regalo { display: flex; align-items: center; justify-content: center; gap: 15px; }
+        .info-regalo .icono { font-size: 1.8rem; color: var(--color-acento); }
+        .nota-adultos { margin-top: 25px; font-weight: bold; }
+        .texto-adicional { font-size: 1rem; font-style: italic; opacity: 0.9; max-width: 600px; margin: 0 auto 30px auto; }
+        @media (max-width:768px){.portada-contenido h1{font-size:2.8rem}.portada-contenido p{font-size:1.2rem}.seccion-contenido-solido{padding:60px 20px}#galeria{padding:60px 20px}.nombres-boda{font-size:3.5rem}h2{font-size:2.2rem}.item-itinerario{flex-wrap:wrap;row-gap:15px}.detalle-evento{flex-basis:100%}.boton-mapa-claro{flex-basis:100%;margin-left:0}}
+        /* ===== CÓDIGO PARA JUNTAR LOS NOMBRES DE LOS PADRES ===== */
+        #padrinos .contenido-interno p {
+            margin-top: 4px;
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+        /* ===== SOLUCIÓN DEFINITIVA PARA GALERÍA MÓVIL ===== */
+#galeria .contenido-interno {
+    position: relative;
+    z-index: 2;
+}
+        /* ===== CÓDIGO FINAL PARA CENTRAR EL ITINERARIO ===== */
+        .item-itinerario {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 25px 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, .1) !important;
+            justify-content: initial;
+            flex-wrap: initial;
+        }
+        .item-itinerario:last-child {
+            border-bottom: none !important;
+        }
+        .detalle-evento {
+            text-align: center !important;
+            flex-grow: 0 !important;
+            margin: 0;
+        }
+        .boton-mapa-claro {
+            margin: 0 !important;
+        }
+        /* ===== CÓDIGO PARA CENTRAR LA INFO ADICIONAL (REGALO Y ADULTOS) ===== */
+        .info-regalo {
+            flex-direction: column;
+        }
+        .info-regalo p {
+            text-align: center;
+            max-width: 450px;
+        }
+        .nota-adultos {
+            text-align: center;
+        }
+
+        /* ===== ESTILOS PARA LA NUEVA SECCIÓN DE LOGO INTERACTIVA ===== */
+#seccion-logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-fondo);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4; /* <-- Aseguramos que esté en una capa alta */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.5s ease-in-out;
+}
+#seccion-logo.visible {
+    opacity: 1; /* Se hace visible con JS */
+    pointer-events: auto;
+}
+#seccion-logo img {
+    /* Tamaño inicial más grande para móviles y adaptable a escritorio */
+    width: 70%;
+    max-width: 450px; /* Límite para pantallas grandes */
+    height: auto;
+    /* La transformación la controlará JS */
+    transform: scale(1.0);
+}
+        /* ===== FIX DEFINITIVO: Forzar visibilidad de la galería ===== */
+#galeria .fade-in-on-scroll {
+    opacity: 1;
+}
+        /* ===== ANIMACIÓN DE ZOOM (KEYFRAMES) ===== */
+        @keyframes zoomInElegante {
+            from {
+                transform: scale(0.95);
+                opacity: 0.8;
+            }
+            to {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
+        /* ===== ANIMACIÓN DEL LOGO (NUEVA) ===== */
+        @keyframes logoZoomElegante {
+            0% {
+                transform: scale(1.0);
+                opacity: 0.5;
+            }
+            25% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+            75% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="portada">
+        <div class="portada-contenido">
+            <h1>Enrique y Alejandra</h1>
+            <p>22 de Noviembre, 2025
+            </p>
+            <a id="verInvitacionBtn" class="boton-invitacion">Ver Invitación</a>
+        </div>
+    </div>
+
+    <div id="seccion-logo">
+        <img src="logo.png" alt="Logo de la Boda">
+    </div>
+    <main id="invitacion-principal" style="visibility: hidden; opacity: 0; transition: opacity 1.5s ease-in-out;">
+
+        <article class="seccion-wrapper" id="save-the-date">
+            <div class="seccion-imagen-sticky" style="background-image: url('foto_vertical.jpg');"></div>
+            <div class="seccion-contenido-solido">
+                <div class="contenido-interno fade-in-on-scroll">
+                    <h2 style="font-family: var(--fuente-elegante); font-size: 3rem; font-style: italic;">Save the Date</h2>
+                    <p style="font-size: 1.5rem;">22 de Noviembre, 2025</p>
+                    <div id="contador-contenedor">
+                        <div class="caja-contador"><span id="dias">00</span><span class="etiqueta">Días</span></div>
+                        <div class="caja-contador"><span id="horas">00</span><span class="etiqueta">Hrs</span></div>
+                        <div class="caja-contador"><span id="minutos">00</span><span class="etiqueta">Mins</span></div>
+                        <div class="caja-contador"><span id="segundos">00</span><span class="etiqueta">Segs</span></div>
+                    </div>
+                    <a id="botonCalendario" href="#" target="_blank" class="boton-calendario"><i class="far fa-calendar-alt"></i> Agregar a Calendario</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="seccion-wrapper" id="aniversario">
+            <div class="seccion-imagen-sticky" style="background-image: url('padresjovenes.jpg');"></div>
+            <div class="seccion-contenido-solido">
+                <div class="contenido-interno fade-in-on-scroll">
+                    <p class="cita-religiosa">“Por encima de todo, vístanse de amor,
+Que es el vínculo perfecto”</p>
+                    <p class="texto-invitacion">Colosenses 3:14</p>
+                </div>
+            </div>
+        </article>
+
+        <article class="seccion-wrapper" id="foto-intermedia-1">
+            <div class="seccion-imagen-sticky" style="background-image: url('fotopadres.jpg');"></div>
+            <div class="seccion-contenido-solido espaciador-scroll">
+                </div>
+        </article>
+
+
+        <article class="seccion-wrapper" id="enlace">
+            <div class="seccion-imagen-sticky" style="background-image: url('padresestudio.jpg');"></div>
+            <div class="seccion-contenido-solido">
+                <div class="contenido-interno fade-in-on-scroll">
+                    <p class="texto-invitacion">Este día especial queremos rodearnos
+De familia y amigos para celebrar el amor que nos une.</p>
+                    <p class="texto-invitacion"></p>
+                    <h1 class="nombres-boda">Enrique y Alejandra</h1>
+                </div>
+            </div>
+        </article>
+
+        <article class="seccion-wrapper" id="padrinos">
+            <div class="seccion-imagen-sticky" style="background-image: url('padrinos.jpg');"></div>
+            <div class="seccion-contenido-solido">
+                <div class="contenido-interno fade-in-on-scroll">
+                    <h2>Nuestros Padres</h2>
+                    <p>-Rosalinda García Montoya</p>
+                    <p>-Pablo Sisneros García</p>
+                    <p style="font-weight: bold; margin-top: 5px;">(Enrique)</p>
+                    <p style="margin-top: 25px;">-Maria Ampelia Cienfuegos Polanco</p>
+                    <p>-Alejandro Sánchez Rodríguez</p>
+                    <p style="font-weight: bold; margin-top: 5px;">(Alejandra)</p>
+                    <h2 style="margin-top: 40px;">Nuestros Padrinos</h2>
+                    <p>Quienes serán testigos de nuestro amor y nos guiarán en nuestro camino.</p>
+                    <p><strong>Velación:</strong><br>-Iris Rodríguez Cienfuegos<br>-Otoniel Herrera Santillán</p>
+                    <p><strong>Anillos:</strong><br>-Reyna Cienfuegos Polanco<br>-Tiburcio Robles Alvarado</p>
+                    <p><strong>Arras:</strong><br>-Rosalinda García Montoya<br>-Pablo Sisneros García</p>
+                    <p><strong>Lazo:</strong><br>-Dora Francisca Sisneros García<br>David Francisco Ruiz Corona</p>
+                    <p><strong>Biblia y Rosario:</strong><br>-Idalia García Estrada<br>-Cruz Cervantes Arreola</p>
+                    <p><strong>Ramo:</strong><br>-Maricruz Arreola Cienfuegos</p>
+                </div>
+            </div>
+        </article>
+
+        <article class="seccion-wrapper" id="itinerario">
+             <div class="seccion-imagen-sticky" style="background-image: url('inti.jpg');"></div>
+             <div class="seccion-contenido-solido">
+                 <div class="contenido-interno fade-in-on-scroll">
+                    <h2 style="font-size: 3.5rem; font-family: var(--fuente-elegante); font-style: italic;">Itinerario</h2>
+                    <div class="lista-itinerario">
+                        <div class="item-itinerario">
+                            <div class="icono-evento"><i class="fas fa-church"></i></div>
+                            <div class="detalle-evento"><h3>Ceremonia</h3><p>5:00 PM</p></div>
+                            <a href="https://maps.app.goo.gl/gJPXzkErSFhEdEBr5" target="_blank" class="boton-mapa-claro">Ver Ubicación</a>
+                        </div>
+                        <div class="item-itinerario">
+                            <div class="icono-evento"><i class="fas fa-glass-cheers"></i></div>
+                            <div class="detalle-evento"><h3>Recepción</h3><p>7:00 PM</p></div>
+                            <a href="https://maps.app.goo.gl/WPrmR5p5qGUrTj2n9" target="_blank" class="boton-mapa-claro">Ver Ubicación</a>
+                        </div>
+                        <div class="item-itinerario">
+                           <div class="icono-evento"><i class="fas fa-utensils"></i></div>
+                           <div class="detalle-evento"><h3>Cena</h3><p>8:00 PM</p></div>
+                        </div>
+                        <div class="item-itinerario">
+                           <div class="icono-evento"><i class="fas fa-music"></i></div>
+                           <div class="detalle-evento"><h3>Fiesta</h3><p>9:00 PM</p></div>
+                        </div>
+                    </div>
+                    <div class="info-adicional">
+                        <div class="info-regalo">
+                            <div class="icono"><i class="fas fa-gift"></i></div>
+                            <p>Si tu deseo es tener un detalle con nosotros puedes hacerlo con
+efectivo en sobres que habrá en la fiesta o mesa de regalos Liverpool código 51688739</p>
+                        </div>
+
+                    </div>
+                </div>
+             </div>
+        </article>
+
+        <section id="galeria">
+            <div class="contenido-interno fade-in-on-scroll">
+                <h2 style="font-size: 3.5rem; font-family: var(--fuente-elegante); font-style: italic;">Nuestros Momentos</h2>
+                <div class="galeria-grid">
+                    <img src="galeria1.jpg" alt="galeria1.jpg"><img src="galeria2.jpg" alt="galeria2.jpg">
+                    <img src="galeria3.jpg" alt="Foto de la pareja 3"><img src="galeria4.jpg" alt="Foto de la pareja 4">
+                    <img src="galeria5.jpg" alt="Foto de la pareja 5"><img src="galeria6.jpg" alt="Foto de la pareja 6">
+                    <img src="galeria7.jpg" alt="Foto de la pareja 7"><img src="galeria8.jpg" alt="Foto de la pareja 8">
+                    <img src="galeria9.jpg" alt="Foto de la pareja 9"><img src="galeria10.jpg" alt="Foto de la pareja 10">
+                    <img src="galeria11.jpg" alt="Foto de la pareja 11"><img src="galeria12.jpg" alt="Foto de la pareja 12">
+                </div>
+            </div>
+        </section>
+
+        <article class="seccion-wrapper" id="vestimenta">
+             <div class="seccion-imagen-sticky" style="background-image: url('codigo.jpg');"></div>
+             <div class="seccion-contenido-solido">
+                 <div class="contenido-interno fade-in-on-scroll">
+                    <h2>Código de Vestimenta</h2>
+                    <p class="vestimenta-texto">Formal</p>
+                    <p class="subtexto-vestimenta">(Colores no permitidos: Blanco, beige, terracota, verde olivo)</p>
+                 </div>
+             </div>
+        </article>
+
+        <article class="seccion-wrapper" id="confirmacion">
+            <div class="seccion-imagen-sticky" style="background-image: url('cinfirmar.jpg');"></div>
+            <div class="seccion-contenido-solido">
+                <div class="contenido-interno fade-in-on-scroll">
+                    <h2>Confirmar Asistencia</h2>
+                    <p class="texto-adicional">Para garantizar la comodidad de todos nuestros invitados agradeceremos
+Respetar el número de pases asignados en esta invitación.
+Muchas gracias.</p>
+                    <form id="rsvp-form">
+                        <input type="text" id="nombre-invitado" name="nombre" placeholder="Escribe tu nombre completo" required>
+                        <select id="asistencia-select" name="asistencia" required>
+                            <option value="" disabled selected>¿Nos acompañarás?</option>
+                            <option value="Sí, asistiré">¡Sí, allí estaré!</option>
+                            <option value="No podré asistir">No podré asistir</option>
+                        </select>
+                        <div id="acompanante-seccion" style="display: none;">
+                            <select id="viene-acompanante-select" name="acompanante">
+                                <option value="" disabled selected>¿Asistirás con un acompañante?</option>
+                                <option value="Sí">Sí, asistiré con alguien</option>
+                                <option value="No">No, asistiré solo(a)</option>
+                            </select>
+                            <div id="nombre-acompanante-wrapper" style="display: none;">
+                                <input type="text" id="nombre-acompanante-input" name="nombre_acompanante" placeholder="Nombre completo del acompañante">
+                            </div>
+                        </div>
+                        <button type="submit">Enviar Confirmación</button>
+                    </form>
+                    <p id="mensaje-gracias" style="display:none; margin-top: 15px;">¡Gracias por tu confirmación! Tu respuesta es muy importante para nosotros y nos ayuda a preparar cada detalle para que podamos celebrar juntos este día tan especial.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+    <audio id="musica-fondo" src="cancion.mp3" loop></audio>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    // --- CONFIGURACIÓN PRINCIPAL ---
+    const config = {
+        fechaBoda: new Date(2025, 10, 22, 17, 0, 0),
+        tituloCalendario: "Boda Enrique & Alejandra",
+        ubicacionCeremonia: "Lugar de la Ceremonia",
+        urlGoogleSheet: "URL_DE_TU_GOOGLE_SHEET" // Asegúrate de poner tu URL de Google Sheet aquí
+    };
+
+    // --- ELEMENTOS DEL DOM (COMPLETOS Y CORREGIDOS) ---
+    const verInvitacionBtn = document.getElementById('verInvitacionBtn');
+    const portada = document.getElementById('portada');
+    const seccionLogo = document.getElementById('seccion-logo');
+    const logoImg = seccionLogo.querySelector('img');
+    const invitacionPrincipal = document.getElementById('invitacion-principal');
+    const audio = document.getElementById('musica-fondo');
+    const rsvpForm = document.getElementById('rsvp-form');
+    const asistenciaSelect = document.getElementById('asistencia-select');
+    const acompananteSeccion = document.getElementById('acompanante-seccion');
+    const vieneAcompananteSelect = document.getElementById('viene-acompanante-select');
+    const nombreAcompananteWrapper = document.getElementById('nombre-acompanante-wrapper');
+    const nombreAcompananteInput = document.getElementById('nombre-acompanante-input');
+
+    // --- LÓGICA DE LA PORTADA (VERSIÓN AUTOMÁTICA MEJORADA) ---
+    if (verInvitacionBtn) {
+        verInvitacionBtn.addEventListener('click', () => {
+            // 1. Iniciar música y ocultar portada
+            audio.play().catch(error => console.log("La reproducción de audio fue bloqueada por el navegador."));
+            portada.classList.add('oculta');
+
+            // 2. Esperar a que la portada se desvanezca y mostrar el logo
+            setTimeout(() => {
+                seccionLogo.classList.add('visible');
+                // Asignar la animación al logo
+                logoImg.style.animation = `logoZoomElegante 3s ease-in-out forwards`;
+            }, 1000); // Coincide con la transición de opacidad de la portada
+
+            // 3. Esperar a que la animación del logo termine para mostrar la invitación
+            setTimeout(() => {
+                // Ocultar la sección del logo
+                seccionLogo.style.display = 'none';
+
+                // Mostrar el contenido principal
+                invitacionPrincipal.style.visibility = 'visible';
+                invitacionPrincipal.style.opacity = '1';
+
+                // Permitir el scroll normal
+                document.body.style.overflow = 'auto';
+
+                // Pequeño truco para asegurar que el scroll se active correctamente
+                window.scrollTo(0, 0);
+            }, 4000); // 1000ms (portada) + 3000ms (animación logo)
+        });
+    }
+
+    // --- LÓGICA PARA ANIMACIONES AL HACER SCROLL ---
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        });
+    }, { threshold: 0.01 });
+    document.querySelectorAll('.fade-in-on-scroll').forEach(section => observer.observe(section));
+
+    // --- LÓGICA DEL CONTADOR REGRESIVO ---
+    const fechaEvento = config.fechaBoda.getTime();
+    const intervalo = setInterval(() => {
+        const ahora = new Date().getTime();
+        const distancia = fechaEvento - ahora;
+        if (distancia < 0) {
+            clearInterval(intervalo);
+            const contadorContenedor = document.getElementById('contador-contenedor');
+            if (contadorContenedor) {
+                contadorContenedor.innerHTML = "<h2>¡El gran día ha llegado!</h2>";
+            }
+            return;
+        }
+        const diasEl = document.getElementById('dias');
+        const horasEl = document.getElementById('horas');
+        const minutosEl = document.getElementById('minutos');
+        const segundosEl = document.getElementById('segundos');
+
+        if(diasEl) diasEl.innerText = String(Math.floor(distancia / 86400000)).padStart(2, '0');
+        if(horasEl) horasEl.innerText = String(Math.floor((distancia % 86400000) / 3600000)).padStart(2, '0');
+        if(minutosEl) minutosEl.innerText = String(Math.floor((distancia % 3600000) / 60000)).padStart(2, '0');
+        if(segundosEl) segundosEl.innerText = String(Math.floor((distancia % 60000) / 1000)).padStart(2, '0');
+    }, 1000);
+
+    // --- LÓGICA DEL BOTÓN "AGREGAR A CALENDARIO" ---
+    function generarLinkCalendario() {
+        const fechaInicio = config.fechaBoda;
+        const fechaFin = new Date(fechaInicio.getTime() + 21600000);
+        const formatoFechaUTC = (fecha) => fecha.toISOString().replace(/-|:|\.\d+/g, '');
+        const url = new URL('https://www.google.com/calendar/render');
+        url.searchParams.append('action', 'TEMPLATE');
+        url.searchParams.append('text', config.tituloCalendario);
+        url.searchParams.append('dates', `${formatoFechaUTC(fechaInicio)}/${formatoFechaUTC(fechaFin)}`);
+        url.searchParams.append('location', config.ubicacionCeremonia);
+        url.searchParams.append('details', `Acompáñanos a celebrar la boda. Detalles en: ${window.location.href}`);
+        const botonCalendario = document.getElementById('botonCalendario');
+        if (botonCalendario) {
+            botonCalendario.href = url.toString();
+        }
+    }
+    generarLinkCalendario();
+
+    // --- LÓGICA DEL FORMULARIO DE ACOMPAÑANTE ---
+    if (asistenciaSelect) {
+        asistenciaSelect.addEventListener('change', (e) => {
+            if (e.target.value === 'Sí, asistiré') {
+                acompananteSeccion.style.display = 'block';
+            } else {
+                acompananteSeccion.style.display = 'none';
+                nombreAcompananteWrapper.style.display = 'none';
+                nombreAcompananteInput.required = false;
+                nombreAcompananteInput.value = '';
+            }
+        });
+    }
+    if (vieneAcompananteSelect) {
+        vieneAcompananteSelect.addEventListener('change', (e) => {
+            const necesitaAcompanante = e.target.value === 'Sí';
+            nombreAcompananteWrapper.style.display = necesitaAcompanante ? 'block' : 'none';
+            nombreAcompananteInput.required = necesitaAcompanante;
+        });
+    }
+
+    // --- LÓGICA DEL ENVÍO DEL FORMULARIO DE CONFIRMACIÓN (RSVP) ---
+    if (rsvpForm) {
+        rsvpForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Verificación para el desarrollador: asegurar que la URL fue cambiada
+            if (config.urlGoogleSheet === "URL_DE_TU_GOOGLE_SHEET" || !config.urlGoogleSheet) {
+                alert("¡Atención! La URL para confirmar la asistencia no ha sido configurada correctamente. Por favor, contacta a los novios por otro medio.");
+                return;
+            }
+
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.disabled = true;
+            submitButton.textContent = 'Enviando...';
+            try {
+                const response = await fetch(config.urlGoogleSheet, { method: 'POST', body: new FormData(this) });
+                if (response.ok) {
+                    document.getElementById('mensaje-gracias').style.display = 'block';
+                    this.style.display = 'none';
+                } else { throw new Error('Error al enviar.'); }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Hubo un problema al enviar tu confirmación. Por favor, inténtalo de nuevo o contacta a los novios.');
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
+        });
+    }
+});
+</script>
